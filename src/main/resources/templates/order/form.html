@@ -11,8 +11,8 @@
 	integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
 	crossorigin="anonymous">
  -->
- 
-<!-- Bootstrap 4.0.0 --> 
+
+<!-- Bootstrap 4.0.0 -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -21,36 +21,36 @@
 
 <body>
 	<div class="container">
-
 		<div class="jumbotron mb-0">
 			<h1 class="display-4">New Order</h1>
 		</div>
-		
-		<form action="/order/new" method="POST">
-			<div>
-
-				<label for="productName">Product</label>
-				<input name="productName" placeholder="product name"/>
-				<small></small>
-				
-				<label for="productUrl">Url</label>
-				<input name="productUrl" placeholder="product url"/>
-				<small></small>
-
-				<label for="imageUrl">Url</label>
-				<input name="imageUrl" placeholder="image url"/>
-				<small></small>
-
-				<label for="description">Description</label>
-				<textarea name="description" placeholder="description"></textarea>
-				<small></small>				
-				
-			</div>
-			
-			<button type="submit">Submit</button>
-			
-		</form>
-
+		<div class="card mt-3">
+			<form th:object="${newOrderDto}" class="card-body" action="/order/new" method="POST">
+				<div class="form-group">
+					
+					<label for="productName">Product</label>
+					<input th:field="*{productName}" th:errorclass="is-invalid" class="form-control" placeholder="product name" />
+					<small></small>
+					<div class="invalid-feedback" th:errors="*{productName}"></div>
+					
+					<label for="productUrl">Product Url</label>
+					<input th:field="*{productUrl}" th:errorclass="is-invalid"  class="form-control" placeholder="product url" />
+					<small></small>
+					<div class="invalid-feedback" th:errors="*{productUrl}"></div>					
+					
+					<label for="imageUrl">Image Url</label>
+					<input th:field="*{imageUrl}" th:errorclass="is-invalid"  class="form-control" placeholder="image url" />
+					<small></small>
+					<div class="invalid-feedback" th:errors="*{imageUrl}"></div>					
+					
+					<label for="description">Description</label>
+					<textarea th:field="*{description}" class="form-control" placeholder="description"></textarea>
+					<small></small>
+					
+				</div>
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+		</div>
 	</div>
 </body>
 </html>
