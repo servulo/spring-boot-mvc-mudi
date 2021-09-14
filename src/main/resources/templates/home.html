@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+
+<!-- Bootstrap 5.1.1 -->
+<!--
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+	crossorigin="anonymous">
+ -->
+ 
+<!-- Bootstrap 4.0.0 --> 
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+</head>
+
+<body>
+	<div class="container">
+
+		<div class="jumbotron mb-0">
+			<h1 class="display-4">My Orders</h1>
+		</div>
+
+		<nav
+			class="navbar navbar-expand navbar-light bg-light d-flex justify-content-between mb-3">
+			<div class="navbar-nav">
+				<a class="nav-item nav-link active" href="">All</a> <a
+					class="nav-item nav-link" href="">Waiting</a> <a
+					class="nav-item nav-link" href="">Approved</a> <a
+					class="nav-item nav-link" href="">Delivered</a>
+			</div>
+			<a href="/order/form"><button class="btn btn-outline-secondary my-2 my-sm-0">Novo</button></a>
+		</nav>
+
+		<div class="card" th:each="order: ${orders}">
+			<div class="card-header" th:text="${order.productName}"></div>
+			<div class="card-body">
+				<div class="row">
+					<div class="col-12 col-sm-8 mb-3">
+						<div class="row">
+							<div class="col-md-5">
+								Price:<span th:text="${order.price}"></span>
+							</div>
+							<div class="col-md-7">
+								Delivery Date: <span th:text="${order.deliveryDate}"></span>
+							</div>
+						</div>
+						<div>Product</div>
+						<div th:text="${order.productUrl}"></div>
+						<div>
+							<input class="form-control" th:value="${order.productUrl}" />
+						</div>
+						<div>Description</div>
+						<div>
+							<textarea class="form-control" th:text="${order.description}"></textarea>
+						</div>
+					</div>
+					<div class="col-12 col-sm-4">
+						<div>
+							<div>
+								<img class="img-thumbnail" th:src="${order.imageUrl}" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>
