@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,5 +26,8 @@ public class Order {
     private String productUrl;
     private String imageUrl;
     private String description;
+
+    @Enumerated(EnumType.STRING)
+    private OrderStatus orderStatus;
 
 }

@@ -3,6 +3,7 @@ package br.com.sprj.mvc.mudi.dto;
 import javax.validation.constraints.NotBlank;
 
 import br.com.sprj.mvc.mudi.model.Order;
+import br.com.sprj.mvc.mudi.model.OrderStatus;
 import lombok.Data;
 
 @Data
@@ -26,6 +27,7 @@ public class NewOrderDto {
 	order.setProductUrl(productUrl);
 	order.setImageUrl(imageUrl);
 	order.setDescription(description);
+	order.setOrderStatus(OrderStatus.WAITING);
 	return order;
     }
 

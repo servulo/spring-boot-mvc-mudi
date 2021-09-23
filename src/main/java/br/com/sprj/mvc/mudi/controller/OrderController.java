@@ -32,7 +32,7 @@ public class OrderController {
 	}
 	Order order = newOrderDto.toOrder();
 	orderRepository.save(order);
-	return "order/form";
+	return "redirect:/home";
     }
 
 }
